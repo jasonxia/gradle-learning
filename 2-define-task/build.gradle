@@ -1,42 +1,58 @@
 task hello1 << {
-println 'hello1'
-println delegate.class.name
+  println 'hello1'
+  println delegate.class.name
 }
 
-
 task hello2 {
-doLast {
-println 'hello2'}
+  doLast {
+    println 'hello2'
+  }
 }
 
 
 task hello3 {
-doLast {
-println 'hello3'}
+  doLast {
+    println 'hello3'
+  }
 }
 
 task showTasks {
-println tasks.class
-println tasks.size()
+  println tasks.class
+  println tasks.size()
+  println "----------"
 }
 
+tasks.create(name: 'hello4') << {
+  println 'hello4'
+}
+
+task hello5(dependsOn:hello4) << {
+  println 'hello5'
+}
+
+task hello6 << {
+  println 'hello6'
+}
+
+hello6.dependsOn hello5
+
 task hello7 << {
-description = "this is hello7"
-println description
+  description = "this is hello7"
+  println description
 }
 
 task hello8 << {
-println description
+  println description
 }
 
 hello8 {
-description = "this is hello8"
+  description = "this is hello8"
 }
 
 task hello9 << {
-println description
+  println description
 }
 
 hello9.configure {
-description = "this is hello9"
+  description = "this is hello9"
 }

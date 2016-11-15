@@ -1,32 +1,32 @@
 task combineFileContentNonIncremental  {
-def sources = fileTree('sourceDir')
+  def sources = fileTree('sourceDir')
 
-def destination = file('destination.txt')
+  def destination = file('destination.txt')
 
-doLast {
-destination.withPrintWriter { writer ->
-sources.each {source ->
-writer.println source.text
-}
-}
-}
+  doLast {
+    destination.withPrintWriter { writer ->
+      sources.each {source ->
+        writer.println source.text
+      }
+    }
+  }
 }
 
 task combineFileContentIncremental  {
-def sources = fileTree('sourceDir')
-def destination = file('destination.txt')
+  def sources = fileTree('sourceDir')
+  def destination = file('destination.txt')
 
 
-inputs.dir sources
+  inputs.dir sources
 
-outputs.file destination
+  outputs.file destination
 
-doLast {
-destination.withPrintWriter { writer ->
-sources.each {source ->
-writer.println source.text
-}
-}
-}
+  doLast {
+    destination.withPrintWriter { writer ->
+      sources.each {source ->
+        writer.println source.text
+      }
+    }
+  }
 }
 
